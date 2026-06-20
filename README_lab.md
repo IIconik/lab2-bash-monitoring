@@ -28,13 +28,16 @@ Créer un script de monitoring complet qui surveille un serveur Linux en continu
 - Ubuntu Server 22.04 avec les services du Lab 1 configurés (SSH, UFW, Fail2Ban, systemd audit)
 - curl installé (`sudo apt install curl -y`)
 
+## 🚀 Déploiement
+
+La procédure complète est disponible dans les PDFs :
+
+📄 **[Lab2_Bash_Monitoring_Complet.pdf](./Lab2_Bash_Monitoring_Complet.pdf)** — Procédure étape par étape
+
+
 ## 🚀 Installation
 
 ```bash
-# Cloner le repo
-git clone git@github.com:IIconik/lab2-bash-monitoring.git
-cd lab2-bash-monitoring
-
 # Créer le fichier log avec les bons droits
 sudo touch /var/log/monitor.log
 sudo chown $USER:$USER /var/log/monitor.log
@@ -63,9 +66,9 @@ crontab -e
 
 ```
 lab2-bash-monitoring/
-├── README.md                          ← ce fichier
-├── Lab2_Bash_Monitoring_Complet.pdf  ← procédure complète
-└── monitor.sh                        ← script de monitoring
+├── README.md
+├── Lab2_Bash_Monitoring_Complet.pdf
+└── monitor.sh
 ```
 
 ## 📊 Exemple de sortie
@@ -121,8 +124,8 @@ lab2-bash-monitoring/
 | Erreur | Solution |
 |--------|----------|
 | `tee: /var/log/monitor.log: Permission denied` | `sudo touch` + `sudo chown user:user` le fichier log |
-| RAM et services non affichés | Oubli de l'appel de fonction après sa définition (`check_ram` manquant à la fin) |
-| Script s'arrête si un service est down | Ajouter `\|\| true` après `check_service` pour éviter que `set -e` stoppe tout |
+| RAM et services non affichés | Oubli de l'appel de fonction après sa définition |
+| Script s'arrête si un service est down | Ajouter `|| true` après `check_service` |
 
 ## 🎓 Compétences mises en pratique
 
